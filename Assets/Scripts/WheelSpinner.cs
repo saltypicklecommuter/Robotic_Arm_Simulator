@@ -49,16 +49,12 @@ public class WheelSpinner : MonoBehaviour
         // If the first wheel has an ArticulationBody, assume they all do
         useArticulation = artBodies[0] != null;
 
-        Debug.Log($"[WheelSpinner] {name}: {wheels.Length} wheels, " +
-                  $"ArticulationBody mode = {useArticulation}");
+
     }
 
     void Update()
     {
         if (wheels == null || wheels.Length == 0) return;
-
-        if (Mathf.Abs(rotationSpeed) > 0.01f)
-            Debug.Log($"[WheelSpinner] {name}: rotationSpeed = {rotationSpeed}");
 
         float angle = rotationSpeed * Time.deltaTime;
         if (reverseDirection) angle = -angle;

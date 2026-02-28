@@ -63,9 +63,6 @@ public class TreadSystem : MonoBehaviour
             return;
         }
 
-        Debug.Log($"[TreadSystem] {name}: Spline length = {splineContainer.Spline.GetLength()}, " +
-                  $"knots = {splineContainer.Spline.Count}, closed = {splineContainer.Spline.Closed}");
-
         links  = new Transform[linkCount];
         tValues = new float[linkCount];
 
@@ -80,21 +77,6 @@ public class TreadSystem : MonoBehaviour
 
             PositionLink(i);
         }
-
-        Debug.Log($"[TreadSystem] {name}: Spawned {linkCount} links. " +
-                  $"First link pos = {links[0].position}");
-
-        // Debug: check what's in the prefab
-        MeshRenderer mr = treadLinkPrefab.GetComponent<MeshRenderer>();
-        MeshRenderer mrChild = treadLinkPrefab.GetComponentInChildren<MeshRenderer>();
-        MeshFilter mf = treadLinkPrefab.GetComponentInChildren<MeshFilter>();
-        Debug.Log($"[TreadSystem] Prefab '{treadLinkPrefab.name}': " +
-                  $"MeshRenderer on root? {mr != null}, " +
-                  $"MeshRenderer in children? {mrChild != null}, " +
-                  $"MeshFilter in children? {mf != null}, " +
-                  $"Mesh name = {(mf != null && mf.sharedMesh != null ? mf.sharedMesh.name : "NONE")}, " +
-                  $"Child count = {treadLinkPrefab.transform.childCount}, " +
-                  $"Prefab scale = {treadLinkPrefab.transform.localScale}");
     }
 
     void Update()
